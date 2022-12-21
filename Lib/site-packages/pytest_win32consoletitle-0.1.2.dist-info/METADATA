@@ -1,0 +1,22 @@
+Metadata-Version: 2.1
+Name: pytest-win32consoletitle
+Version: 0.1.2
+Summary: Pytest progress in console title (Win32 only)
+Home-page: https://github.com/Novakov/pytest_win32consoletitle
+Author: Maciej Nowak
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Framework :: Pytest
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Utilities
+Classifier: Operating System :: Microsoft :: Windows
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+Pytest progress in Win32 console title
+---
+
+This library provides very simple progress of pytest execution by setting console title.
+
