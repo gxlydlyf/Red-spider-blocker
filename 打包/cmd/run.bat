@@ -29,17 +29,21 @@ C:\Windows\System32\attrib -r "C:\Program Files (x86)\3000soft\Red Spider"
 
 C:\Windows\System32\attrib -r "C:\Program Files\3000soft\Red Spider"
 cd /d C:\Program Files\3000soft\Red Spider
+C:\Windows\System32\taskkill /f /t /im "RSpider.exe"
 C:\Windows\System32\taskkill /f /t /im "REDAgent.exe"
 del /f /s /q REDAgent.exe
 C:\Windows\System32\attrib -r "C:\Program Files (x86)\3000soft\Red Spider"
 cd /d C:\Program Files (x86)\3000soft\Red Spider
+C:\Windows\System32\taskkill /f /t /im "RSpider.exe"
 C:\Windows\System32\taskkill /f /t /im "REDAgent.exe"
 del /f /s /q REDAgent.exe
 C:\Windows\System32\attrib -r "C:\Program Files(x86)\3000soft\Red Spider"
 cd /d C:\Program Files(x86)\3000soft\Red Spider
+C:\Windows\System32\taskkill /f /t /im "RSpider.exe"
 C:\Windows\System32\taskkill /f /t /im "REDAgent.exe"
 del /f /s /q REDAgent.exe
             
+C:\Windows\System32\taskkill /f /t /im "RSpider.exe"
 C:\Windows\System32\taskkill /f /t /im "REDAgent.exe"
 del /f /s /q REDAgent.exe
 cd /d C:\Program Files\3000soft\Red Spider
