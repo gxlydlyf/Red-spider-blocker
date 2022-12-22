@@ -73,8 +73,8 @@ explain3.place(x = 200,y = 185)
 
 def benduikangqishuom():
     easygui.msgbox(msg='本对抗器为使用红蜘蛛多媒体教室的在校学生，写了个对抗程序，希望能帮到大家。作者网站：“https://lyfbbs.freehost.ssjs.shop/”，项目地址“https://lyfbbs.freehost.ssjs.shop/%E5%8F%91%E5%B8%83%E6%96%87%E7%AB%A0/essay.php?id=23”还有“https://github.com/gxlydlyf/Red-spider-blocker”。点击运行后可以运行根据选项生成好的bat文件，如果不能自动运行可以点击运行后手动运行，要运行文件的目录“'+os.getcwd()+'\cmd\\run.bat”',title='自定义路径说明',ok_button='明白了')
-explain3=tk.Button(window,text='本对抗器说明',command=benduikangqishuom,bd=1,font = ("./font/simkai.ttf",15),background='#FFC90E',activebackground='#FFC90E')
-explain3.place(x = 360,y = 185)
+explain4=tk.Button(window,text='本对抗器说明',command=benduikangqishuom,bd=1,font = ("./font/simkai.ttf",15),background='#FFC90E',activebackground='#FFC90E')
+explain4.place(x = 360,y = 185)
 
 class newEntry(tk.Entry):
     def __init__(self, master=None, placeholder="PLACEHOLDER", color="grey"):
@@ -109,6 +109,9 @@ class newEntry(tk.Entry):
 entry1 = newEntry(window,"输入红蜘蛛位置")
 entry1.configure(font = ("./font/simkai.ttf",15),width=42)
 entry1.place(x = 0,y=305)
+entry1.foc_in()
+entry1.delete("0", "end")
+entry1.insert(0, 'C:\Program Files (x86)\\3000soft\Red Spider')
 
 def liulanwenjianlujing():
     a = filedialog.askdirectory(title='选择红蜘蛛路径')
@@ -124,32 +127,38 @@ def runbathzz():
     # easygui.msgbox('你输入的路径是'+textdejieguo)
     with open('./cmd/run.bat','w+',encoding='utf8') as f:
         if text1text=='阻断':
-            cmmddd = 'taskkill /f /t /im \"REDAgent.exe\"'
+            cmmddd = 'C:\Windows\System32\\taskkill /f /t /im "REDAgent.exe"'
             echoon1 = '@echo on'
             echoon2 = ''
+            cmmddd2=''
         elif text1text=='删除':
-            cmmddd = 'del /f /s /q REDAgent.exe'
+            cmmddd = 'C:\Windows\System32\\taskkill /f /t /im "REDAgent.exe"\ndel /f /s /q REDAgent.exe'
             echoon1 = ''
             echoon2 = '@echo on'
         if scrhrefms=='关':
             cmmdddluj=''
             textdejieguo = 'C:\Program Files (x86)\\3000soft\Red Spider'
-            cmmddd2='''rmdir /s/q "C:\Program Files\\3000soft\Red Spider"
+            if text1text == '删除':
+                cmmddd2='''cd /d C:\Program Files\\3000soft\Red Spider
+rmdir /s/q "C:\Program Files\\3000soft\Red Spider"
+cd /d C:\Program Files (x86)\\3000soft\Red Spider
 rmdir /s/q "C:\Program Files (x86)\\3000soft\Red Spider"
+cd /d C:\Program Files(x86)\\3000soft\Red Spider
 rmdir /s/q "C:\Program Files(x86)\\3000soft\Red Spider"'''
             cmmdddluj='''
-attrib -r "C:\Program Files\\3000soft\Red Spider"
+C:\Windows\System32\\attrib -r "C:\Program Files\\3000soft\Red Spider"
 cd /d C:\Program Files\\3000soft\Red Spider
 {cmd}
-attrib -r "C:\Program Files (x86)\\3000soft\Red Spider"
+C:\Windows\System32\\attrib -r "C:\Program Files (x86)\\3000soft\Red Spider"
 cd /d C:\Program Files (x86)\\3000soft\Red Spider
 {cmd}
-attrib -r "C:\Program Files(x86)\\3000soft\Red Spider"
+C:\Windows\System32\\attrib -r "C:\Program Files(x86)\\3000soft\Red Spider"
 cd /d C:\Program Files(x86)\\3000soft\Red Spider
 {cmd}
             '''.format(cmd=cmmddd)
         elif scrhrefms=='开':
-            cmmddd2=''
+            if text1text == '删除':
+                cmmddd2='rmdir /s/q "{luj}"'.format(luj=textdejieguo)
             cmmdddluj = 'cd /d {luj}'.format(luj=textdejieguo)
         neirong = '''
 @echo off
@@ -160,7 +169,6 @@ if '%errorlevel%' NEQ '0' (
 echo 请求管理员权限...
 
 goto UACPrompt
-
 ) else ( goto gotAdmin )
 
 :UACPrompt
@@ -179,15 +187,18 @@ echo {luj}
 :start
 
 {echoon2}
-attrib -r "{luj}"
+C:\Windows\System32\\attrib -r "{luj}"
 {cmmdddluj}
-{cmmddd2}
 {cmmddd}
+{cmmddd2}
 
 goto start
 '''.format(luj=textdejieguo,cmmddd=cmmddd,cmmdddluj=cmmdddluj,cmmddd2=cmmddd2,echoon1=echoon1,echoon2=echoon2)
         f.write(neirong)
-    os.system('cmd\\run.bat.lnk')
+    # print(os.getcwd()+'\cmd\\run.bat')
+    # subprocess.Popen('start '+os.getcwd()+'\cmd\\run.bat')
+    # os.popen('start cmd /k start .\cmd\\run.bat').read()
+    os.system("start .\cmd\\run.bat")
 btnrun = tk.Button(window,text='运行',font = ("./font/simkai.ttf",50),background='red',activebackground='red',width=10,command=runbathzz)
 btnrun.place(x=75,y=380)
 window.mainloop()
