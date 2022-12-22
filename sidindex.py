@@ -127,12 +127,12 @@ def runbathzz():
     # easygui.msgbox('你输入的路径是'+textdejieguo)
     with open('./cmd/run.bat','w+',encoding='utf8') as f:
         if text1text=='阻断':
-            cmmddd = 'C:\Windows\System32\\taskkill /f /t /im "REDAgent.exe"'
+            cmmddd = 'C:\Windows\System32\\taskkill /f /t /im "REDAgent.exe"\nC:\Windows\System32\\taskkill /f /t /im "RSpider.exe"'
             echoon1 = '@echo on'
             echoon2 = ''
             cmmddd2=''
         elif text1text=='删除':
-            cmmddd = 'C:\Windows\System32\\taskkill /f /t /im "REDAgent.exe"\ndel /f /s /q REDAgent.exe'
+            cmmddd = 'C:\Windows\System32\\taskkill /f /t /im "RSpider.exe"\nC:\Windows\System32\\taskkill /f /t /im "REDAgent.exe"\ndel /f /s /q REDAgent.exe'
             echoon1 = ''
             echoon2 = '@echo on'
         if scrhrefms=='关':
